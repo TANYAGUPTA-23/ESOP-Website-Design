@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="final.css">
+    <link rel="stylesheet" href="testimonial-marquee.css">
     <link href="https://fonts.cdnfonts.com/css/raleway-5" rel="stylesheet">
 </head>
 
@@ -32,7 +33,7 @@
                     <img src="./assets/phone.svg" alt="Phone" />
                     <span>+91 9821174156</span>
                 </div>
-                <button class="nav-button">
+                <button class="nav-button all-btns">
                     <span>Book a Demo</span>
                     <img src="./assets/arrow-right.svg" alt="Arrow" />
                 </button>
@@ -65,40 +66,44 @@
         </div>
     </div>
 
-    <div class="hero-section">
-        <div class="container">
+<div class="hero-section">
+            <!-- 🎬 Background Video inside container -->
+        <video autoplay muted loop playsinline>
+            <source src="./assets/hero_video.mp4" type="video/mp4">
+        </video>
+    <div class="container">
 
-            <!-- Top Ad Banner -->
-            <div class="top-ad-banner">
-                <img src="./assets/hero.svg" alt="">
-                India's #1 ESOP Service Platform | Trusted by 200+ Companies
-            </div>
 
-            <!-- Main Headline -->
-            <h1 class="headline">
-                Empowering Founders to Manage Equity, ESOPs, and
-                <span class="gradient-text">Growth</span>
-            </h1>
-
-            <!-- Subtitle -->
-            <p class="subtitle">
-                A powerful platform to plan, track, and manage your cap table and ESOPs — all in one place.
-            </p>
-
-            <!-- CTA Buttons -->
-            <div class="cta-buttons">
-                <a href="#" class="cta-button cta-primary">
-                    Get Started Today
-                    <img src="./assets/arrow-right.svg" alt="">
-                </a>
-                <a href="#" class="cta-button cta-secondary">
-                    Watch Demo
-                </a>
-            </div>
+        <!-- Top Ad Banner -->
+        <div class="top-ad-banner all-banners">
+            <img src="./assets/hero.svg" alt="">
+            India's #1 ESOP Service Platform | Trusted by 200+ Companies
         </div>
-    </div>
 
-    <div class="below_hero">
+        <!-- Main Headline -->
+        <h1 class="headline">
+            Empowering Founders to Manage Equity, ESOPs, and
+            <span class="text-style">
+                <span class="gradient-text" id="hero-gradient-text">Growth</span>
+            </span>
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="subtitle">
+            A powerful platform to plan, track, and manage your cap table and ESOPs — all in one place.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="cta-buttons">
+            <a href="#" class="cta-button cta-primary all-btns">
+                <span>Get Started Today</span>
+                <img src="./assets/arrow-right.svg" alt="">
+            </a>
+            <a href="#" class="cta-button cta-secondary">
+                Watch Demo
+            </a>
+        </div>
+            <div class="below_hero">
         <img src="./assets/below_hero.png" alt="">
 
         <!-- ✨ Thin glowing line SVG -->
@@ -114,6 +119,11 @@
         </svg>
 
     </div>
+    </div>
+</div>
+
+
+
 
     <section class="below-hero-section">
         <div class="below-container">
@@ -172,7 +182,7 @@
         <div class="main-content">
             <!-- LEFT SIDE -->
             <div class="left-side">
-                <div class="impact-label">Our Impact</div>
+                <div class="impact-label all-banners">Our Impact</div>
                 <h1 class="highlight">Powering the Future of ESOPs Across India</h1>
                 <p>
                     From startups to unicorns — ESOP Guardian helps you launch, manage,
@@ -180,7 +190,7 @@
                 </p>
 
                 <div class="esop-cta-wrapper">
-                    <a href="#" class="esop-cta-button">
+                    <a href="#" class="esop-cta-button all-btns">
                         <span>Generate Your ESOP — Free</span>
                         <img src="./assets/arrow-right.svg" alt="">
                     </a>
@@ -198,12 +208,11 @@
                         <div class="avatar count">8M</div>
                     </div>
                 </div>
+            </div>
 
 
 
                 <!-- RIGHT SIDE -->
-
-            </div>
             <div class="right-side">
                 <div class="stat-card-outer">
                     <div class="stat-card">
@@ -309,6 +318,8 @@
         </svg>
     </div>
 
+<!-- Sticky Wrapper (controls how long choose-section stays pinned) -->
+<!-- <section class="choose-sticky-container"> -->
 
     <div class="choose-section">
         <div class="choose-wrapper">
@@ -385,7 +396,7 @@
 
                     </div>
                     <div class="card-text-content">
-                        <p class="card-title">100 % SEBI Compliant</p>
+                        <p class="card-title"><span class="card-title-one">100 %</span> SEBI Compliant</p>
                         <p class="card-subtitle">Fully compliant with SEBI regulations</p>
                     </div>
                 </div>
@@ -481,6 +492,7 @@
             <rect width="1200" height="4" fill="url(#edgeFadeGlow)" />
         </svg>
     </div>
+    <!-- </section> -->
 
     <div class="benefits-section">
         <div class="benefits-wrapper">
@@ -1011,8 +1023,8 @@
                 <img class="integration image" src="./assets/integration.png" alt="">
 
                 <!-- Button overlay -->
-                <a href="#" class="cta-btn2 btn-primary2">
-                    Start your journey
+                <a href="#" class="cta-btn2 btn-primary2 all-btns">
+                   <span>Start your journey</span> 
                     <img src="./assets/arrow-right.svg" alt="">
                 </a>
 
@@ -1035,7 +1047,7 @@
     <section class="comparison">
         <div class="comparison-container">
             <header class="comparison-header">
-                <div class="comparison-header-tag-container">
+                <div class="comparison-header-tag-container header-tag-container">
                     <span class="header-tag-text">Comparison</span>
                 </div>
                 <h1 class="comparison-header-title">
@@ -1200,7 +1212,7 @@
     <section class="questions-section">
         <div class="questions-section__wrapper">
             <header class="questions-header">
-                <div class="questions-header-tag-container">
+                <div class="questions-header-tag-container header-tag-container">
                     <span class="questions-header-tag-text">FAQ'S</span>
                 </div>
                 <h1 class="questions-header-title">
@@ -1320,7 +1332,7 @@
     <section class="team-section">
         <div class="team-section__wrapper">
             <header class="questions-header">
-                <div class="questions-header-tag-container">
+                <div class="questions-header-tag-container header-tag-container">
                     <span class="questions-header-tag-text">Our Amazing Team</span>
                 </div>
                 <h1 class="questions-header-title">
@@ -1531,7 +1543,7 @@
     <section class="testimonal-section">
         <div class="testimonal-wrapper">
             <header class="questions-header">
-                <div class="questions-header-tag-container">
+                <div class="questions-header-tag-container header-tag-container">
                     <span class="questions-header-tag-text">Testimonials</span>
                 </div>
                 <h1 class="questions-header-title">
@@ -1824,7 +1836,7 @@
             </header>
         </div>
 
-        <a href="#" class="call-to-action-button">Get Started Today <img src="./assets/arrow-right.svg" alt=""></a>
+        <a href="#" class="call-to-action-button all-btns"><span>Get Started Today</span> <img src="./assets/arrow-right.svg" alt=""></a>
 
         <div class="below-image-container">
             <img src="./assets/management2.png"
