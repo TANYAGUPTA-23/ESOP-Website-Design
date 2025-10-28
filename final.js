@@ -1,3 +1,33 @@
+const videoSection = document.querySelector('.video-section');
+const videoFrame = document.querySelector('.video-frame-outer');
+const overlay = document.querySelector('.overlay-image');
+
+window.addEventListener('scroll', () => {
+  const screenWidth = window.innerWidth;
+
+  if (screenWidth >= 1024) { // desktop only
+    const sectionTop = videoSection.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
+
+    // Trigger when section enters viewport (80% visible)
+    if (sectionTop < windowHeight * 0.4 && sectionTop > -videoSection.offsetHeight) {
+      videoFrame.style.transform = 'scale(1.2)';
+      overlay.style.filter = 'brightness(100%)';
+    } else {
+      videoFrame.style.transform = 'scale(1)';
+      overlay.style.filter = 'brightness(50%)'; // default brightness
+    }
+  } else {
+    // Reset on mobile/tablet
+    videoFrame.style.transform = 'scale(1)';
+    overlay.style.filter = 'brightness(50%)';
+  }
+});
+
+
+
+
+
 // JavaScript for 2-bounce effect
 document.addEventListener('DOMContentLoaded', () => {
   const button = document.querySelector('.esop-cta-button');
@@ -27,6 +57,35 @@ document.addEventListener('DOMContentLoaded', () => {
   span.addEventListener('animationend', () => span.classList.remove('bounce-text'));
   img.addEventListener('animationend', () => img.classList.remove('bounce-icon'));
 });
+const tabss = document.querySelectorAll('.stakeholder-tab');
+const contentWrappers = document.querySelectorAll('.content-text-wrapper');
+
+tabss.forEach((tab, index) => {
+  tab.addEventListener('click', () => {
+    // Remove active class from all tabs and content
+    tabss.forEach(t => t.classList.remove('active'));
+    contentWrappers.forEach(c => c.classList.remove('active'));
+
+    // Add active class to clicked tab and corresponding content
+    tab.classList.add('active');
+    contentWrappers[index].classList.add('active');
+  });
+});
+
+
+
+  // Select all tab buttons
+  const tabs = document.querySelectorAll('.stakeholder-tab, .tab-button');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      // Remove active from all
+      tabs.forEach(t => t.classList.remove('active'));
+      // Add active to clicked one
+      tab.classList.add('active');
+    });
+  });
+
 
   // window.addEventListener('load', () => {
   //   const sectionOne = document.querySelector('.section.below-hero-section');
@@ -69,37 +128,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-document.addEventListener('DOMContentLoaded', () => {
-  const gradientText = document.getElementById('hero-gradient-text');
-  if (!gradientText) return;
-  const words = ['Success', 'Growth', 'Control'];
-  let idx = 0;
+// document.addEventListener('DOMContentLoaded', () => {
+//   const gradientText = document.getElementById('hero-gradient-text');
+//   if (!gradientText) return;
+//   const words = ['Success', 'Growth', 'Control'];
+//   let idx = 0;
 
-  function bounceAndSwitch() {
-    gradientText.classList.remove('bouncing');
-    void gradientText.offsetWidth; // restart animation
-    gradientText.classList.add('bouncing');
-  }
+//   function bounceAndSwitch() {
+//     gradientText.classList.remove('bouncing');
+//     void gradientText.offsetWidth; // restart animation
+//     gradientText.classList.add('bouncing');
+//   }
 
-  function nextWord() {
-    idx = (idx + 1) % words.length;
-    gradientText.textContent = words[idx];
-    bounceAndSwitch();
-  }
+//   function nextWord() {
+//     idx = (idx + 1) % words.length;
+//     gradientText.textContent = words[idx];
+//     bounceAndSwitch();
+//   }
 
-  // Initial bounce
-  bounceAndSwitch();
+//   // Initial bounce
+//   bounceAndSwitch();
 
-  // Cycle every 1.5s
-  setInterval(() => {
-    nextWord();
-  }, 1500);
+//   // Cycle every 1.5s
+//   setInterval(() => {
+//     nextWord();
+//   }, 1500);
 
-  // Clean up class after animation
-  gradientText.addEventListener('animationend', () => {
-    gradientText.classList.remove('bouncing');
-  });
-});
+//   // Clean up class after animation
+//   gradientText.addEventListener('animationend', () => {
+//     gradientText.classList.remove('bouncing');
+//   });
+// });
 
 
 
@@ -326,96 +385,96 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Initialize benefits marquee
-document.addEventListener('DOMContentLoaded', () => {
-  const grid = document.querySelector('.benefits-cards-grid');
-  if (!grid) return;
+// document.addEventListener('DOMContentLoaded', () => {
+//   const grid = document.querySelector('.benefits-cards-grid');
+//   if (!grid) return;
 
-  const originalHTML = grid.innerHTML;
-  let marqueeInitialized = false;
+//   const originalHTML = grid.innerHTML;
+//   let marqueeInitialized = false;
 
-  function initMarquee() {
-    if (marqueeInitialized || window.innerWidth <= 768) return;
+//   function initMarquee() {
+//     if (marqueeInitialized || window.innerWidth <= 768) return;
 
-    const cards = Array.from(grid.querySelectorAll('.benefit-card'));
-    if (cards.length < 3) return;
+//     const cards = Array.from(grid.querySelectorAll('.benefit-card'));
+//     if (cards.length < 3) return;
 
-    const cols = [document.createElement('div'), document.createElement('div'), document.createElement('div')];
-    cols.forEach(c => c.className = 'benefits-column');
-    cards.forEach((card, idx) => {
-      const targetCol = idx % 3;
-      cols[targetCol].appendChild(card.cloneNode(true));
-    });
+//     const cols = [document.createElement('div'), document.createElement('div'), document.createElement('div')];
+//     cols.forEach(c => c.className = 'benefits-column');
+//     cards.forEach((card, idx) => {
+//       const targetCol = idx % 3;
+//       cols[targetCol].appendChild(card.cloneNode(true));
+//     });
 
-    grid.innerHTML = '';
-    cols.forEach(col => grid.appendChild(col));
-    grid.classList.add('marquee-ready');
+//     grid.innerHTML = '';
+//     cols.forEach(col => grid.appendChild(col));
+//     grid.classList.add('marquee-ready');
 
-    cols.forEach((col, colIndex) => {
-      const inner = document.createElement('div');
-      inner.className = 'benefits-column-inner';
+//     cols.forEach((col, colIndex) => {
+//       const inner = document.createElement('div');
+//       inner.className = 'benefits-column-inner';
 
-      const children = Array.from(col.children);
-      if (colIndex !== 1) {
-        const originalChildren = [...children];
-        children.length = 0;
-        if (colIndex === 0 || colIndex === 2) {
-          children.push(
-            ...originalChildren.slice(6),
-            ...originalChildren.slice(0, 6)
-          );
-        }
-      }
+//       const children = Array.from(col.children);
+//       if (colIndex !== 1) {
+//         const originalChildren = [...children];
+//         children.length = 0;
+//         if (colIndex === 0 || colIndex === 2) {
+//           children.push(
+//             ...originalChildren.slice(6),
+//             ...originalChildren.slice(0, 6)
+//           );
+//         }
+//       }
 
-      children.forEach(child => inner.appendChild(child));
-      children.forEach(child => inner.appendChild(child.cloneNode(true)));
-      children.forEach(child => inner.appendChild(child.cloneNode(true)));
+//       children.forEach(child => inner.appendChild(child));
+//       children.forEach(child => inner.appendChild(child.cloneNode(true)));
+//       children.forEach(child => inner.appendChild(child.cloneNode(true)));
 
-      col.innerHTML = '';
-      col.appendChild(inner);
+//       col.innerHTML = '';
+//       col.appendChild(inner);
 
-      requestAnimationFrame(() => {
-        const totalHeight = inner.scrollHeight;
-        const singleSetHeight = totalHeight / 3;
-        col.style.height = singleSetHeight + 'px';
-        col.style.overflow = 'hidden';
-        grid.style.height = singleSetHeight + 'px';
-        inner.style.setProperty('--marquee-distance', singleSetHeight + 'px');
-        inner.style.setProperty('--marquee-duration', '11s');
+//       requestAnimationFrame(() => {
+//         const totalHeight = inner.scrollHeight;
+//         const singleSetHeight = totalHeight / 3;
+//         col.style.height = singleSetHeight + 'px';
+//         col.style.overflow = 'hidden';
+//         grid.style.height = singleSetHeight + 'px';
+//         inner.style.setProperty('--marquee-distance', singleSetHeight + 'px');
+//         inner.style.setProperty('--marquee-duration', '11s');
 
-        if (colIndex === 1) {
-          inner.classList.add('marquee-up');
-          inner.style.transform = 'translateY(0)';
-        } else {
-          inner.classList.add('marquee-down');
-          inner.style.transform = `translateY(${-singleSetHeight}px)`;
-        }
-      });
-    });
+//         if (colIndex === 1) {
+//           inner.classList.add('marquee-up');
+//           inner.style.transform = 'translateY(0)';
+//         } else {
+//           inner.classList.add('marquee-down');
+//           inner.style.transform = `translateY(${-singleSetHeight}px)`;
+//         }
+//       });
+//     });
 
-    marqueeInitialized = true;
-    grid.dataset.marqueeInit = '1';
-  }
+//     marqueeInitialized = true;
+//     grid.dataset.marqueeInit = '1';
+//   }
 
-  function destroyMarquee() {
-    if (!marqueeInitialized) return;
-    grid.innerHTML = originalHTML;
-    grid.classList.remove('marquee-ready');
-    grid.style.height = '';
-    delete grid.dataset.marqueeInit;
-    marqueeInitialized = false;
-  }
+//   function destroyMarquee() {
+//     if (!marqueeInitialized) return;
+//     grid.innerHTML = originalHTML;
+//     grid.classList.remove('marquee-ready');
+//     grid.style.height = '';
+//     delete grid.dataset.marqueeInit;
+//     marqueeInitialized = false;
+//   }
 
-  initMarquee();
+//   initMarquee();
 
-  let resizeTimer = null;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
-      if (window.innerWidth <= 768) {
-        destroyMarquee();
-      } else {
-        initMarquee();
-      }
-    }, 150);
-  });
-});
+//   let resizeTimer = null;
+//   window.addEventListener('resize', () => {
+//     clearTimeout(resizeTimer);
+//     resizeTimer = setTimeout(() => {
+//       if (window.innerWidth <= 768) {
+//         destroyMarquee();
+//       } else {
+//         initMarquee();
+//       }
+//     }, 150);
+//   });
+// });
