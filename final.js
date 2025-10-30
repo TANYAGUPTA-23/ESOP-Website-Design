@@ -10,7 +10,8 @@ window.addEventListener('scroll', () => {
     const windowHeight = window.innerHeight;
 
     // Trigger when section enters viewport (80% visible)
-    if (sectionTop < windowHeight * 0.4 && sectionTop > -videoSection.offsetHeight) {
+    if (sectionTop < windowHeight * 0.4 && sectionTop > -videoSection.offsetHeight * 0.6)
+ {
       videoFrame.style.transform = 'scale(1.2)';
       overlay.style.filter = 'brightness(100%)';
     } else {

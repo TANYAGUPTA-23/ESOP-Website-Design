@@ -586,11 +586,11 @@ html, body {
   mask-image: linear-gradient(to bottom, black 25%, transparent 100%);
   -webkit-mask-image: linear-gradient(to bottom, black 25%, transparent 100%);
 }
-
 /* === LOOPING ANIMATION CONTAINER === */
 .animated-words {
   display: inline-block;
-  height: 90px; /* match text line height */
+  line-height: 1.2em;
+  height: 1.2em;
   overflow: hidden;
   vertical-align: bottom;
 }
@@ -600,37 +600,32 @@ html, body {
   list-style: none;
   margin: 0;
   padding: 0;
-  animation: titleflip 5s ease-in-out infinite;
+  animation: titleflip 4s ease-in-out infinite;
 }
 
 .t .l1 {
   font-size: 72px;
   line-height: 90px;
-  /* text-transform: uppercase; */
   height: 90px;
 }
 
-/* === ANIMATION === */
+/* === ANIMATION (3 words only, seamless reset) === */
 @keyframes titleflip {
-  0%, 20% {
+  0%, 30% {
     transform: translateY(0);
   }
-  20%, 40% {
+  33%, 63% {
     transform: translateY(-90px);
   }
-  40%, 60% {
+  66%, 96% {
     transform: translateY(-180px);
   }
-  60%, 80% {
-    transform: translateY(-270px);
-  }
-  80%, 100% {
-    transform: translateY(-360px);
-  }
-  100%, 0% {
-    transform: translateY(0);
+  100% {
+    transform: translateY(0); /* instantly jump back, no blank space */
   }
 }
+
+
 
 
 /* === BLUR UNDERLAY === */
@@ -736,7 +731,10 @@ background-color: rgba(255, 255, 255, 0.15);
         font-size: 18px;
         margin-bottom: 40px;
     }
-}
+        .animated-words {
+  line-height: 90px;
+  height: 90px;
+}}
 
 /* ≤ 600px (Mobile) */
 @media (max-width: 600px) {
@@ -750,8 +748,7 @@ background-color: rgba(255, 255, 255, 0.15);
 
     .animated-words {
   line-height: 90px;
-  /* text-transform: uppercase; */
-  height: 60px;
+  height: 70px;
 }
 
     .headline {
@@ -798,12 +795,6 @@ background-color: rgba(255, 255, 255, 0.15);
       height: 60px;
     }
 
-        .animated-words {
-  line-height: 90px;
-  /* text-transform: uppercase; */
-  height: 50px;
-  /* width: 100px; */
-}
 
     .headline {
         font-size: 32px;
@@ -832,7 +823,7 @@ background-color: rgba(255, 255, 255, 0.15);
 }
 
 /* For ultra small screens (max-width: 400px) */
-@media (max-width: 400px) {
+@media (max-width: 460px) {
 
   .container{
     padding: 0 10px;
@@ -841,12 +832,50 @@ background-color: rgba(255, 255, 255, 0.15);
         padding: 70px 0 40px 0;
     }
 
-    .headline {
-        font-size: 28px;
-        line-height: 1.2;
-        padding: 0 12px;
-        margin-bottom: 0;
-    }
+.headline {
+  font-size: 28px;
+  line-height: 1.2;
+  padding: 0 12px;
+  margin-bottom: 0;
+}
+
+/* animation container */
+.animated-words {
+  line-height: 60px; /* text line height */
+  height: 60px;      /* container height matches line height */
+  overflow: hidden;
+}
+
+/* === LIST SETUP === */
+.t {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  animation: titleflip-mobile 6s ease-in-out infinite;
+}
+
+.t .l1 {
+  font-size: inherit;
+  line-height: 60px; /* match the container */
+  height: 60px;
+}
+
+/* === ANIMATION (3 words) === */
+@keyframes titleflip-mobile {
+  0%, 30% {
+    transform: translateY(0);
+  }
+  33%, 63% {
+    transform: translateY(-60px);
+  }
+  66%, 96% {
+    transform: translateY(-120px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
 
     .hero-section .subtitle {
         font-size: 14px;
@@ -860,7 +889,7 @@ background-color: rgba(255, 255, 255, 0.15);
 }
 
 /* For the smallest screens (max-width: 360px) */
-@media (max-width: 360px) {
+@media (max-width: 395px) {
     .headline {
         font-size: 24px;
         line-height: 1.1;
@@ -1083,7 +1112,7 @@ background-color: rgba(255, 255, 255, 0.15);
 /* RESPONSIVE STYLES */
 /* ------------------------- */
 @media (max-width: 1024px) {
-  h1 { font-size: 40px; }
+  .below-container h1 { font-size: 40px; }
   .logo-item { width: 140px; height: 70px; }
   .logo-gallery-wrapper, .logo-overlay { height: 90px; }
 }
@@ -3694,8 +3723,8 @@ background-color: rgba(255, 255, 255, 0.15);
   }
 
   .integration-img .cta-btn2 img {
-    width: 12px;
-    height: 12px;
+    width: 14px;
+    height: 14px;
   }
 }
 
